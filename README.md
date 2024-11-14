@@ -1,16 +1,16 @@
 # Django-REST-Framework-API-Project
 Django REST API project for learning purposes. It has been developed following this [tutorial](https://www.youtube.com/watch?v=GE0Q8YNKNgs).
-Below I explain some of the steps followed, as a way to internalize what has been learned and as notes that will be useful in case Iwant to carry out a new similar project.
+Below I explain some of the steps followed, as a way to internalize what has been learned and as notes that will be useful in case I want to carry out a new similar project.
 
 
 ## Setup Steps
 
-Assuming Python has been installed previously:
+Is assumed Python has been installed previously and the used IDE is Visual Studio Code (VSC).
 
 
 1. ### Creation of Virtual Environment
 
-Enter the following commands on a console placed in your project folder (using VSC console directly in my case):
+Enter the following commands on a console placed in your project folder (using the console offered by VSC directly):
 
 ```console
 pip install virtualenv
@@ -57,11 +57,11 @@ Enter this command:
 py manage.py startapp [app-name]
 ```
 
-Then, go to `settings.py` inside the folder of our django project and add the name of the created app to the list of "INSTALLED_APPS".
+Then, go to `settings.py` inside the folder of our django project and add the name of the created app to the list of `INSTALLED_APPS`.
 
 6. ### Add REST framework module to Settings.py
 
-Just like in the previous step: go to `settings.py` inside the folder of our django project and add "rest_framework" to the list of "INSTALLED_APPS".
+Just like in the previous step: go to `settings.py` inside the folder of our django project and add `rest_framework` to the list of `INSTALLED_APPS`.
 
 7. ### Running the project into a local server
 
@@ -106,3 +106,9 @@ Routes
 Add app routes to the project by using `include()` into the urlpatterns of `urls.py` file into the project folder.
 
 5. ### Creating urls. py
+
+
+
+### Using REST client
+
+VSC extension Thunder Client. REST API Client Extension
