@@ -112,3 +112,39 @@ Add app routes to the project by using `include()` into the urlpatterns of `urls
 ### Using REST client
 
 VSC extension Thunder Client. REST API Client Extension
+
+
+
+### Deploy using render.com
+
+Create account and use free trial
+Create a git repository and edit .gitignore
+
+https://docs.render.com/deploy-django
+Follow Adding basic security section
+
+Follow Adding PostgreSQL support section
+
+pip install dj-database-url psycopg2-binary
+
+Had different problems installing psycopg2-binary:
+
+What I did to resolve it:
+
+- Install PostgrSQL (https://www.postgresql.org/download/)
+- Added the installation folder plus "/bin" to the `$PATH`
+- Tried using the command: `pip install psycopg2-binary --global-option=build_ext --global-option="-I [folder location for PostgreSQL + /bin]` (In my case, it shows another error related with C++)
+- Installed [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/). We must select the option labelled with "Desktop development with C++".
+
+
+Follow Set up static file serving section
+As render cannot serve static files:
+Install whitenoise
+`pip install whitenoise[brotli]`
+
+Follow Create a build script section
+Create requirements.txt: `pip freeze > requirements.txt`
+
+Open a git bach on VSC and enter `chmod a+x build.sh`, after creating this file. Problems in Windows... Using ls -l on build.sh shows the permissions remain the same...
+
+`pip install gunicorn`
