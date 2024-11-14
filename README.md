@@ -86,7 +86,7 @@ py manage.py makemigrations
 py manage.py migrate
 ```
 
-> [!DANGER]
+> [!CAUTION]
 > Below sections are pending completion
 
 2. ### Creating serializers.py
