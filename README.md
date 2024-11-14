@@ -76,6 +76,10 @@ Sepecifications about the IP adress and port will be displayed after entering th
 
 ## Development Steps
 
+> [!CAUTION]
+> These steps are better followed directly from the tutorial, what I encourage to do, as is needed to modify files, create accounts on external services, etc.
+> Information given below covers just general aspects and some troubleshooting.  
+
 1. ### Creating Models
 
 Inside the app folder, we can create models, that will be converted to tables, on the `models.py` file.
@@ -86,8 +90,6 @@ py manage.py makemigrations
 py manage.py migrate
 ```
 
-> [!CAUTION]
-> Below sections are pending completion
 
 2. ### Creating serializers.py
 
@@ -143,8 +145,9 @@ Install whitenoise
 `pip install whitenoise[brotli]`
 
 Follow Create a build script section
-Create requirements.txt: `pip freeze > requirements.txt`
 
 Open a git bach on VSC and enter `chmod a+x build.sh`, after creating this file. Problems in Windows... Using ls -l on build.sh shows the permissions remain the same...
 
 `pip install gunicorn`
+
+Create requirements.txt: `pip freeze > requirements.txt`
