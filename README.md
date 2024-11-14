@@ -77,7 +77,7 @@ Sepecifications about the IP adress and port will be displayed after entering th
 ## Development Steps
 
 > [!CAUTION]
-> These steps are better followed directly from the tutorial, what I encourage to do, as is needed to modify files, create accounts on external services, etc.
+> These steps are better followed directly from the [tutorial](https://www.youtube.com/watch?v=GE0Q8YNKNgs), what I encourage to do, as is needed to modify files, create accounts on external services, etc.
 > Information given below covers just general aspects and some troubleshooting.  
 
 1. ### Creating Models
