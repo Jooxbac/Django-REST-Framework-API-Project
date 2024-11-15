@@ -29,7 +29,7 @@ One option is to enter the following command:
 For convenience, best option is to select the specific Python interpreter for out virtual environment. We can select it, on VSC, pressing "F1" and searching for "Python select interpreter". The adequate Python interpreter should be higlighted as the recommended one.
 
 
-3. ### Installing Django and DjangoREST Frameworks
+3. ### Installing Django and Django REST Frameworks
 
 Enter the following commands:
 
@@ -76,13 +76,16 @@ Sepecifications about the IP adress and port will be displayed after entering th
 
 ## Development Steps
 
-> [!CAUTION]
+> [!WARNING]
 > These steps are better followed directly from the [tutorial](https://www.youtube.com/watch?v=GE0Q8YNKNgs), what I encourage to do, as is needed to modify files, create accounts on external services, etc.
 > Information given below covers just general aspects and some troubleshooting.  
 
 1. ### Creating Models
 
-Inside the app folder, we can create models, that will be converted to tables, on the `models.py` file.
+In the app folder we can create models, that will be converted to database tables, adding them to the `models.py` file. Each class will be a table, and each attribute will be a column. id column will be created by default. We can specify the type of data for each attribute using `models` class methods (eg: models.CharField()).
+
+![Model creation example in models.py](/images/01_models.jpg)
+
 To migrate this models to a database we must enter the following commands:
 
 ```console
@@ -90,16 +93,21 @@ py manage.py makemigrations
 py manage.py migrate
 ```
 
+`makemigrations`command scans models changes on the apps registered on the projects `INSTALLED_APPS`, on `settings.py`, and create a .py file in the app's migrations folder, describing the changes to be made to the database.
+`migrate`command applies the specified changes: reads pending migrations files and executes them orderly to synchonize the models with the database, modifying the actual structure of the database. It also updates the Django's migrations register, to make sure this is applied just once.
+
 
 2. ### Creating serializers.py
 
-Inside the app folder we create a `serializers.py` file. Serializers allow us to call an special model of REST framework.
+For more info on Django's REST framework operations, take a look at its [docs](https://www.django-rest-framework.org/).
+In the app folder we create a `serializers.py` file. Serializers allow us to call an special model of REST framework.
 
 <!-- UserViewSet, es una forma de convertir los datos de Python en JSON, y seleccionar quien podrá ver los datos. -->
 
 
 3. ### Creating api.py
 
+ViewSet: allows Django to convert Python data to JSON objects that will be offered to the client for consulting. We can also select who will be able to access this data.
 
 4. ### Creating urls. py
 
@@ -127,7 +135,7 @@ Follow Adding basic security section
 
 Follow Adding PostgreSQL support section
 
-pip install dj-database-url psycopg2-binary
+`pip install dj-database-url psycopg2-binary`
 
 Had different problems installing psycopg2-binary:
 
