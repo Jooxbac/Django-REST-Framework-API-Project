@@ -87,7 +87,7 @@ Sepecifications about the IP adress and port will be displayed after entering th
 
 1. ### Creating Models
 
-In the app folder we can create models, that will be converted to database tables, adding them to the `models.py` file. Each class will be a table, and each attribute will be a column. id column will be created by default. We can specify the type of data for each attribute using `models` class methods (eg: models.CharField()).
+In the app's folder we can create models, that will be converted to database tables, adding them to the `models.py` file. Each class will be a table, and each attribute will be a column. id column will be created by default. We can specify the type of data for each attribute using `models` class methods (eg: models.CharField()).
 
 ![Model creation example in models.py](/images/01_models.jpg)
 
@@ -104,7 +104,7 @@ py manage.py migrate
 
 2. ### Creating serializers.py
 
-In the app folder we create a `serializers.py` file. There, we import Django REST's serializers and our before created model and create a serializer:
+In the app's folder we create a `serializers.py` file. There, we import Django REST's serializers and our before created model and create a serializer:
 
 ![Serializer creation example in serializers.py](/images/02_serializers.jpg)
 
@@ -116,7 +116,7 @@ Take a look at docs for more info on [Django's REST framework serializer](https:
 
 3. ### Creating api.py
 
-Here we will crete a ViewSet: select who will be able to access this data. That requests can be made, or if authentication is needed.
+Create api.py file in the app's folder. First, import our Project model and our ProjectSerializer serializer and viewsets and permissions from Django REST. Then, create a ViewSet ([ModelViewSet](https://www.django-rest-framework.org/api-guide/viewsets/#modelviewset)), which has CRUD functionalities, and where we can specify data to be consulted, permissions for viewing the data and the serializer used to transform the data:
 
 
 4. ### Creating urls. py
