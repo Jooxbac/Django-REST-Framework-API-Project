@@ -38,6 +38,7 @@ pip install django
 pip install djangorestframework
 ```
 
+
 4. ### Start Django Project
 
 Enter this command:
@@ -49,6 +50,7 @@ django-admin startproject [project-name] .
 > [!NOTE]
 > Notice the use of ".". If we are working in a folder already, that avoids the need to create an extra folder.
 
+
 5. ### Start and Add App to Settings.py
 
 Enter this command:
@@ -59,9 +61,11 @@ py manage.py startapp [app-name]
 
 Then, go to `settings.py` inside the folder of our django project and add the name of the created app to the list of `INSTALLED_APPS`.
 
+
 6. ### Add REST framework module to Settings.py
 
 Just like in the previous step: go to `settings.py` inside the folder of our django project and add `rest_framework` to the list of `INSTALLED_APPS`.
+
 
 7. ### Running the project into a local server
 
@@ -79,6 +83,7 @@ Sepecifications about the IP adress and port will be displayed after entering th
 > [!WARNING]
 > These steps are better followed directly from the [tutorial](https://www.youtube.com/watch?v=GE0Q8YNKNgs), what I encourage to do, as is needed to modify files, create accounts on external services, etc.
 > Information given below covers just general aspects and some troubleshooting.  
+
 
 1. ### Creating Models
 
@@ -99,15 +104,20 @@ py manage.py migrate
 
 2. ### Creating serializers.py
 
-For more info on Django's REST framework operations, take a look at its [docs](https://www.django-rest-framework.org/).
-In the app folder we create a `serializers.py` file. Serializers allow us to call an special model of REST framework.
+In the app folder we create a `serializers.py` file. There, we import Django REST's serializers and our before created model and create a serializer:
 
-<!-- UserViewSet, es una forma de convertir los datos de Python en JSON, y seleccionar quien podrá ver los datos. -->
+![Serializer creation example in serializers.py](/images/02_serializers.jpg)
+
+Django REST serializers transform complex data (like instances of Django models) to smple Python types that can be then easily rendered to formats like JSON or XML, that are more suitable to be send as a response when using an API. They also perform the opposite operation: transforming simple data to complex data.
+Moreover, serializers will allow us to call an special model of REST framework ([ModelSerializer](https://www.django-rest-framework.org/api-guide/serializers/#modelserializer)).
+
+Take a look at docs for more info on [Django's REST framework serializer](https://www.django-rest-framework.org/api-guide/serializers/).
 
 
 3. ### Creating api.py
 
-ViewSet: allows Django to convert Python data to JSON objects that will be offered to the client for consulting. We can also select who will be able to access this data.
+Here we will crete a ViewSet: select who will be able to access this data. That requests can be made, or if authentication is needed.
+
 
 4. ### Creating urls. py
 
@@ -115,14 +125,15 @@ Routes
 
 Add app routes to the project by using `include()` into the urlpatterns of `urls.py` file into the project folder.
 
+
 5. ### Creating urls. py
 
+Content
 
 
 ### Using REST client
 
 VSC extension Thunder Client. REST API Client Extension
-
 
 
 ### Deploy using render.com

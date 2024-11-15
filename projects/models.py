@@ -7,3 +7,4 @@ class Project(models.Model):
     description = models.TextField()
     technology = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
+    # An id field will be created even if not specified
