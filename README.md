@@ -121,19 +121,30 @@ Create api.py file in the app's folder. First, import our Project model and our 
 ![ViewSet creation example in api.py](/images/03_api.jpg)
 
 
-4. ### Creating urls. py
-
-Routes
-
-Add app routes to the project by using `include()` into the urlpatterns of `urls.py` file into the project folder.
+4. ### Creating and adding URLs
 
 
-5. ### Creating urls. py
+Create urls.py file in the app's folder. Import routers module from Django REST and our before created ModelViewSet, create a router, generate the CRUD routes and add them to the files URLs in urlpatterns:
 
-Content
+![URLs generation example in urls.py](/images/)
+
+Then, in project's folder `urls.py` file import include module and add the app's routes by using `include()` into the urlpatterns of this file.
+
+![Adding URLs to urls.py in project's folder](/images/)
 
 
-### Using REST client
+## Accesing the API
+
+If we enter the `py manage.py runserver` command, now we can access to the "api/projects/" route of the project, and we can view, write, update and delete data.
+
+![Adding URLs to urls.py in project's folder](/images/05_access.jpg)
+
+If we want to access to a project's specific data, we just need to enter the id into the URL:
+
+![Adding URLs to urls.py in project's folder](/images/06_access_by_id.jpg)
+
+
+### Accesing the API using a REST client
 
 VSC extension Thunder Client. REST API Client Extension
 
