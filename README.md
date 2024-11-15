@@ -51,7 +51,7 @@ django-admin startproject [project-name] .
 > Notice the use of ".". If we are working in a folder already, that avoids the need to create an extra folder.
 
 
-5. ### Start and Add App to Settings.py
+5. ### Start and Add App to settings.py
 
 Enter this command:
 
@@ -62,12 +62,12 @@ py manage.py startapp [app-name]
 Then, go to `settings.py` inside the folder of our django project and add the name of the created app to the list of `INSTALLED_APPS`.
 
 
-6. ### Add REST framework module to Settings.py
+6. ### Add REST Framework Module to settings.py
 
 Just like in the previous step: go to `settings.py` inside the folder of our django project and add `rest_framework` to the list of `INSTALLED_APPS`.
 
 
-7. ### Running the project into a local server
+7. ### Running the Project Into a Local Server
 
 We can use the following command to run our project in a local server whenever we want:
 
@@ -79,10 +79,6 @@ Sepecifications about the IP adress and port will be displayed after entering th
 
 
 ## Development Steps
-
-> [!WARNING]
-> These steps are better followed directly from the [tutorial](https://www.youtube.com/watch?v=GE0Q8YNKNgs), what I encourage to do, as is needed to modify files, create accounts on external services, etc.
-> Information given below covers just general aspects and some troubleshooting.  
 
 
 1. ### Creating Models
@@ -121,65 +117,60 @@ Create api.py file in the app's folder. First, import our Project model and our 
 ![ViewSet creation example in api.py](/images/03_api.jpg)
 
 
-4. ### Creating and adding URLs
-
+4. ### Creating and Adding URLs
 
 Create urls.py file in the app's folder. Import routers module from Django REST and our before created ModelViewSet, create a router, generate the CRUD routes and add them to the files URLs in urlpatterns:
 
-![URLs generation example in urls.py](/images/)
+![URLs generation example in urls.py](/images/04_urls_app.jpg)
 
 Then, in project's folder `urls.py` file import include module and add the app's routes by using `include()` into the urlpatterns of this file.
 
-![Adding URLs to urls.py in project's folder](/images/)
+![Adding URLs to urls.py in project's folder](/images/05__urls_project.jpg)
 
 
 ## Accesing the API
 
-If we enter the `py manage.py runserver` command, now we can access to the "api/projects/" route of the project, and we can view, write, update and delete data.
+If we enter the `py manage.py runserver` command, now we can access to the "api/projects/" route of the project, where we can view, write, update and delete data.
 
-![Adding URLs to urls.py in project's folder](/images/05_access.jpg)
+![Adding URLs to urls.py in project's folder](/images/06_access.jpg)
 
 If we want to access to a project's specific data, we just need to enter the id into the URL:
 
-![Adding URLs to urls.py in project's folder](/images/06_access_by_id.jpg)
+![Adding URLs to urls.py in project's folder](/images/07_access_by_id.jpg)
 
 
-### Accesing the API using a REST client
+## Accesing the API Using a REST Client
 
 VSC extension Thunder Client. REST API Client Extension
 
 
-### Deploy using render.com
+## Deploy Using Render Cloud Application Platform
 
-Create account and use free trial
-Create a git repository and edit .gitignore
+> [!WARNING]
+> These steps are better followed directly from the [tutorial](https://www.youtube.com/watch?v=GE0Q8YNKNgs), what I encourage to do, as is needed to create accounts on external services and use these services, which I won't cover, etc.
+> Information given below covers just general aspects and some troubleshooting.  
 
-https://docs.render.com/deploy-django
-Follow Adding basic security section
+Create a [render.com](https://render.com/) account and use free trial
+Create a git repository and edit .gitignore (I didn't edit .gitignore as recommended, which may had affected to the database data showing when I deployed the app)
 
-Follow Adding PostgreSQL support section
+The tutorial follows some of the [Deploy Django](https://docs.render.com/deploy-django) Render's article. From here we should pay attention to the following sections: [Adding basic security](https://docs.render.com/deploy-django#adding-basic-security), [Adding PostgreSQL support](https://docs.render.com/deploy-django#adding-postgresql-support), [Set up static file serving](https://docs.render.com/deploy-django#set-up-static-file-serving), [Create a build script](https://docs.render.com/deploy-django#create-a-build-script).
 
-`pip install dj-database-url psycopg2-binary`
+Some of the commands needed while following the Render's article are:
 
-Had different problems installing psycopg2-binary:
+`pip install whitenoise[brotli]` for installing whitenoise, as Render cannot serve static files
 
-What I did to resolve it:
+`pip install gunicorn` for installing gunicorn, a Web Server Gateway Interface (WSGI) which Render uses for deployment.
 
-- Install PostgrSQL (https://www.postgresql.org/download/)
-- Added the installation folder plus "/bin" to the `$PATH`
-- Tried using the command: `pip install psycopg2-binary --global-option=build_ext --global-option="-I [folder location for PostgreSQL + /bin]` (In my case, it shows another error related with C++)
-- Installed [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/). We must select the option labelled with "Desktop development with C++".
+`pip freeze > requirements.txt` for creating requirements.txt including all dependencies: 
 
 
-Follow Set up static file serving section
-As render cannot serve static files:
-Install whitenoise
-`pip install whitenoise[brotli]`
+### Troubleshooting
 
-Follow Create a build script section
+While following Adding PostgreSQL support section, I had trouble using the `pip install psycopg2-binary` command, here is what I did to resolve it:
 
-Open a git bach on VSC and enter `chmod a+x build.sh`, after creating this file. Problems in Windows... Using ls -l on build.sh shows the permissions remain the same...
+- Installed [PostgrSQL](https://www.postgresql.org/download/).
+- Added the PostgreSQL installation folder route plus "/bin" to the systems `$PATH`.
+- Then, anyways, used the command: `pip install psycopg2-binary --global-option=build_ext --global-option="-I [folder location for PostgreSQL + /bin]` (in my case, it showed another error related with C++).
+- Installed [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/), selecting the option labelled with "Desktop development with C++".
 
-`pip install gunicorn`
-
-Create requirements.txt: `pip freeze > requirements.txt`
+I also had trouble when trying to change build.sh permissions, as I was using Windows and changing permissions don't work the same as Linux there. Using the `chmod a+x build.sh` command seemed useless, as `ls -l build.sh` showed no execution permissions for the file. Anyways, I tried following along the tutorial and everything worked fine.
