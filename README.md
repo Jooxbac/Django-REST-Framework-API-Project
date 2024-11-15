@@ -132,16 +132,18 @@ Then, in project's folder `urls.py` file import include module and add the app's
 
 If we enter the `py manage.py runserver` command, now we can access to the "api/projects/" route of the project, where we can view, write, update and delete data.
 
-![Adding URLs to urls.py in project's folder](/images/06_access.jpg)
+![Acces to api](/images/06_access.jpg)
 
 If we want to access to a project's specific data, we just need to enter the id into the URL:
 
-![Adding URLs to urls.py in project's folder](/images/07_access_by_id.jpg)
+![Acces to one api's specific project](/images/07_access_by_id.jpg)
 
 
 ## Accesing the API Using a REST Client
 
-VSC extension Thunder Client. REST API Client Extension
+We can also access the API and interact with it using a REST Client. For this purpose we can install a VSC extension named Thunder Client. The next image shows the client interacting with the API:
+
+![Interacting with the api through a REST client](/images/08_access_with_rest_client.jpg)
 
 
 ## Deploy Using Render Cloud Application Platform
