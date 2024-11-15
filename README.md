@@ -102,7 +102,7 @@ py manage.py migrate
 `migrate`command applies the specified changes: reads pending migrations files and executes them orderly to synchonize the models with the database, modifying the actual structure of the database. It also updates the Django's migrations register, to make sure this is applied just once.
 
 
-2. ### Creating serializers.py
+2. ### Creating Serializer
 
 In the app's folder we create a `serializers.py` file. There, we import Django REST's serializers and our before created model and create a serializer:
 
@@ -114,9 +114,11 @@ Moreover, serializers will allow us to call an special model of REST framework (
 Take a look at docs for more info on [Django's REST framework serializer](https://www.django-rest-framework.org/api-guide/serializers/).
 
 
-3. ### Creating api.py
+3. ### Creating ViewSet
 
 Create api.py file in the app's folder. First, import our Project model and our ProjectSerializer serializer and viewsets and permissions from Django REST. Then, create a ViewSet ([ModelViewSet](https://www.django-rest-framework.org/api-guide/viewsets/#modelviewset)), which has CRUD functionalities, and where we can specify data to be consulted, permissions for viewing the data and the serializer used to transform the data:
+
+![ViewSet creation example in api.py](/images/03_api.jpg)
 
 
 4. ### Creating urls. py
